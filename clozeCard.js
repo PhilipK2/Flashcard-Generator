@@ -1,31 +1,33 @@
-function ClozeCard (text, cloze) {
+function ClozeCard(text, cloze) {
     this.fulltext = text;
     this.cloze = cloze;
-    this.partial = funtion(){
+    this.partial = function() {
         return text.replace(cloze, "...");
     };
-    
-};
+    this.check = function() {
+        if (!text.includes(cloze)) {
+            console.log("text does not have the cloze statement.");
+        }
+    }
+
+}
 
 
 
 
-
-
-
-
-
-var firstPresidentCloze = new ClozeCard(
-    "George Washington was the first president of the United States.", "George Washington");
+var firstPresidentCloze = new ClozeCard("George Washington was the first president of the United States.", "George Washington");
 
 // "George Washington"
 console.log(firstPresidentCloze.cloze);
 
 // " ... was the first president of the United States.
-console.log(firstPresidentCloze.partial); "
+console.log(firstPresidentCloze.partial);
 
 // "George Washington was the first president of the United States.
-console.log(firstPresidentCloze.fullText): "
+console.log(firstPresidentCloze.fullText);
 
-// Should throw or log an error because "oops" doesn't appear in "This doesn't work"
 var brokenCloze = new ClozeCard("This doesn't work", "oops");
+
+brokenCloze.check();
+
+module.exports = ClozeCard;
